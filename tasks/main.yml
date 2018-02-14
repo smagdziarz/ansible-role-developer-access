@@ -1,0 +1,15 @@
+---
+- name: "Add user"
+  include: "user.yml"
+  with_items: "{{ linux_users }}"
+  loop_control:
+    loop_var: "user"
+
+- name: "Configure sudoers"
+  template:
+    src: "etc/sudoers.d/10-sitewards-linux-users"
+    dest: "/etc/sudoers.d/10-sitewards-linux-users"
+    owner: "root"
+    group: "root"
+    mode: "u=r,g=r,o="
+  when: linux_users_passwordless_sudo

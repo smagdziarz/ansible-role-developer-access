@@ -1,0 +1,17 @@
+---
+# Adds a linux user
+- name: "Ensure user is in expected state"
+  user:
+    name: "{{ user.username }}"
+    append: "yes"
+    shell: "{{ user.shell | default('/bin/bash') }}"
+    groups: "{{ user.groups | default([]) }}"
+    state: "{{ user.state | default('present') }}"
+
+- name: "Ensure SSH key for user is up to date"
+  authorized_key:
+    user: "{{ user.username }}"
+    state: "present"
+    key: "{{ item }}"
+  with_items: "{{ user.public_keys }}"
+  when: user.state|default('present') == "present"

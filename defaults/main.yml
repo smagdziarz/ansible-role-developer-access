@@ -1,0 +1,19 @@
+---
+## Which users should live on this machine
+linux_users: []
+  ## The username to login with
+  # - username: ""
+  ## The public key for SSH access
+  ## (Optional)
+  # public_keys: [""]
+  ## Which additional groups to place the user in
+  ## (Optional)
+  # groups:
+  #   - ""
+  ## Which shell the user would like
+  # shell: "/bin/bash"
+  ## Whether that user should be present or absent
+  # state: "present"
+
+## Whether to grant users of the group "sudo" passwordless access to sudo
+linux_users_passwordless_sudo: false
