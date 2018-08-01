@@ -1,6 +1,14 @@
 ---
 - hosts: all
 
-  vars: {}
+  vars:
+    linux_users:
+      - username: "linux_user"
+        public_keys:
+          - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCvJCVFlprEt1Dw2i3FsKQA4oCSphL3uyLXovLcyfKmHXoArCHTza/AAT7vJrHX5q58TMWhQFhePeBcnnftqyXrIMQzlYqgV1rwESc9gIMaz3iXpCcpgA7rf+Sy7e+DiC8QwoDO/w9lRF0WhyOKsb+Zhss7Yq6eLe4bgPQpdrOmZnwFqrKtCIElpmovzXV69m6Vt0T5sTwWuddJ240hlWL4Zm7wBf0P3YQ2tw1Q/NkU5yzsZ8VEF4FStgeFKzQbMA/+Sfuk9ycEk7s71BVA18fy/Aee7db/jNoWA0XxrmxaWCxsgAWZg/tvS2Q+PZfzoMNaWOrYibhW/AVy96+xWnX9"
+        groups:
+          - "sudo"
+        shell: "/bin/bash"
+        state: "present"
   roles:
     - role_under_test
